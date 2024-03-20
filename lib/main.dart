@@ -1,3 +1,4 @@
+import 'package:equatable_asif_taj/override_method.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,6 +26,19 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Person person1 = Person(name: "Nashva", age: 26);
+          Person person2 = Person(name: "Nashva", age: 26);
+          //the output will be false if you dont override the == operator
+          //in dart it only compare the object name not the values in the 2 objects
+          print(person1 == person2);
+          print(person1.hashCode.toString());
+          print(person2.hashCode.toString());
+        },
+        child: const Icon(Icons.add),
+      ),
+    );
   }
 }
