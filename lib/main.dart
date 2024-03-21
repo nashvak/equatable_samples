@@ -1,6 +1,7 @@
-import 'package:equatable_asif_taj/bloc/counter_bloc.dart';
-import 'package:equatable_asif_taj/bloc/counter_event.dart';
-import 'package:equatable_asif_taj/bloc/counter_state.dart';
+import 'package:equatable_asif_taj/bloc/counter/counter_bloc.dart';
+import 'package:equatable_asif_taj/bloc/counter/counter_event.dart';
+import 'package:equatable_asif_taj/bloc/counter/counter_state.dart';
+import 'package:equatable_asif_taj/bloc/switch/switch_bloc.dart';
 import 'package:equatable_asif_taj/screens/second_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,13 +17,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => CounterBloc(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+      child: BlocProvider(
+        create: (_) => SwitchBloc(),
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          home: const HomePage(),
         ),
-        home: const HomePage(),
       ),
     );
   }
