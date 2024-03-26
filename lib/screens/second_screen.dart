@@ -18,7 +18,12 @@ class SecondScreen extends StatelessWidget {
             children: [
               const Text("Notification"),
               BlocBuilder<SwitchBloc, SwitchState>(
+                // when we use the slider section, this switch builder is also building
+                //to avoid this we use buildwhen
+                buildWhen: (previous, current) =>
+                    previous.isSwitch != current.isSwitch,
                 builder: (context, state) {
+                  print("notification");
                   return Switch(
                       value: state.isSwitch,
                       onChanged: (value) {
@@ -28,23 +33,26 @@ class SecondScreen extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
+
+          //  S E C T I O N     2
+
           //// a slider with container, the opacity color of the container changes according to the value of the slider.
           BlocBuilder<SwitchBloc, SwitchState>(
             builder: (context, state) {
+              print("CONTAINER");
               return Container(
                 height: 200,
                 color: Colors.red.withOpacity(state.slider),
               );
             },
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
+
           BlocBuilder<SwitchBloc, SwitchState>(
+            buildWhen: (previous, current) => previous.slider != current.slider,
             builder: (context, state) {
+              print("slider");
               return Slider(
                   value: state.slider,
                   onChanged: (value) {
