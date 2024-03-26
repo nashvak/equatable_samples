@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       child: BlocProvider(
         create: (_) => SwitchBloc(),
         child: MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Bloc',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,

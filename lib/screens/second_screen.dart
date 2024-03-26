@@ -16,7 +16,7 @@ class SecondScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Notification"),
+              const Text("Notification"),
               BlocBuilder<SwitchBloc, SwitchState>(
                 builder: (context, state) {
                   return Switch(
@@ -28,17 +28,32 @@ class SecondScreen extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Container(
-            height: 200,
-            color: Colors.red.withOpacity(0.2),
+          //// a slider with container, the opacity color of the container changes according to the value of the slider.
+          BlocBuilder<SwitchBloc, SwitchState>(
+            builder: (context, state) {
+              return Container(
+                height: 200,
+                color: Colors.red.withOpacity(state.slider),
+              );
+            },
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Slider(value: 0.4, onChanged: (value) {})
+          BlocBuilder<SwitchBloc, SwitchState>(
+            builder: (context, state) {
+              return Slider(
+                  value: state.slider,
+                  onChanged: (value) {
+                    context
+                        .read<SwitchBloc>()
+                        .add(SliderEvent(sliderValue: value));
+                  });
+            },
+          )
         ],
       ),
     );
