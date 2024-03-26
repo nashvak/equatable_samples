@@ -1,10 +1,11 @@
-import 'package:equatable_asif_taj/bloc/counter/counter_bloc.dart';
-import 'package:equatable_asif_taj/bloc/counter/counter_event.dart';
-import 'package:equatable_asif_taj/bloc/counter/counter_state.dart';
-import 'package:equatable_asif_taj/bloc/switch/switch_bloc.dart';
-import 'package:equatable_asif_taj/screens/second_screen.dart';
+import 'package:equatable_asif_taj/counter/bloc/counter/counter_bloc.dart';
+import 'package:equatable_asif_taj/image_picker/bloc/bloc/image_picker_bloc.dart';
+import 'package:equatable_asif_taj/image_picker/utils/image_service.dart';
+import 'package:equatable_asif_taj/screen%202/bloc/switch/switch_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'counter/page/first_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SwitchBloc(),
         ),
+        BlocProvider(create: (context) => ImagePickerBloc(ImageService()))
       ],
       child: MaterialApp(
         title: 'Bloc',
@@ -38,56 +40,6 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: const HomePage(),
-      ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SecondScreen()));
-              },
-              icon: Icon(Icons.arrow_forward))
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            BlocBuilder<CounterBloc, CounterState>(
-              builder: (context, state) {
-                return Text(
-                  state.counter.toString(),
-                  style: TextStyle(fontSize: 25),
-                );
-              },
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(
-                    onPressed: () {
-                      context.read<CounterBloc>().add(IncrementCounter());
-                    },
-                    child: const Text("Increment")),
-                ElevatedButton(
-                    onPressed: () {
-                      context.read<CounterBloc>().add(DecrementCounter());
-                    },
-                    child: const Text("Decrement"))
-              ],
-            )
-          ],
-        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
-import 'package:equatable_asif_taj/bloc/switch/switch_bloc.dart';
-import 'package:equatable_asif_taj/bloc/switch/switch_event.dart';
-import 'package:equatable_asif_taj/bloc/switch/switch_state.dart';
+import 'package:equatable_asif_taj/image_picker/page/third_screen.dart';
+import 'package:equatable_asif_taj/screen%202/bloc/switch/switch_bloc.dart';
+import 'package:equatable_asif_taj/screen%202/bloc/switch/switch_event.dart';
+import 'package:equatable_asif_taj/screen%202/bloc/switch/switch_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +11,18 @@ class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ThirdScreen()));
+              },
+              icon: const Icon(Icons.arrow_forward))
+        ],
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
