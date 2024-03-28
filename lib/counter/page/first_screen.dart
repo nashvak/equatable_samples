@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../screen 2/page/second_screen.dart';
+import '../../slider_switch/page/second_screen.dart';
 import '../bloc/counter/counter_bloc.dart';
 import '../bloc/counter/counter_event.dart';
 import '../bloc/counter/counter_state.dart';

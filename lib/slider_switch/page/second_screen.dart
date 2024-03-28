@@ -1,7 +1,7 @@
 import 'package:equatable_asif_taj/image_picker/page/third_screen.dart';
-import 'package:equatable_asif_taj/screen%202/bloc/switch/switch_bloc.dart';
-import 'package:equatable_asif_taj/screen%202/bloc/switch/switch_event.dart';
-import 'package:equatable_asif_taj/screen%202/bloc/switch/switch_state.dart';
+import 'package:equatable_asif_taj/slider_switch/bloc/switch/switch_bloc.dart';
+import 'package:equatable_asif_taj/slider_switch/bloc/switch/switch_event.dart';
+import 'package:equatable_asif_taj/slider_switch/bloc/switch/switch_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

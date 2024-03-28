@@ -1,11 +1,12 @@
 import 'package:equatable_asif_taj/counter/bloc/counter/counter_bloc.dart';
 import 'package:equatable_asif_taj/image_picker/bloc/bloc/image_picker_bloc.dart';
 import 'package:equatable_asif_taj/image_picker/utils/image_service.dart';
-import 'package:equatable_asif_taj/screen%202/bloc/switch/switch_bloc.dart';
+import 'package:equatable_asif_taj/slider_switch/bloc/switch/switch_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'counter/page/first_screen.dart';
+import 'todo/sections/bloc/todo_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +32,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SwitchBloc(),
         ),
-        BlocProvider(create: (context) => ImagePickerBloc(ImageService()))
+        BlocProvider(
+          create: (context) => ImagePickerBloc(
+            ImageService(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => TodoBloc(),
+        ),
       ],
       child: MaterialApp(
         title: 'Bloc',
